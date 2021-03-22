@@ -1,0 +1,31 @@
+body {
+  height: 100vh;
+}
+
+.drum-pad {
+  background-color: green;
+  height: 4rem;
+  width: 4rem;
+}
+
+.drum-pad:active {
+  background-color: white;
+  color: green;
+}
+
+.volume {
+  background-color: cyan;
+}
+
+#display {
+  background-color: grey;
+  text-align: center;
+  width: 10rem;
+}
+
+@media (max-width: 575.98px) {
+  .volume {
+    margin-top: 1rem;
+  }
+}
+/*# sourceMappingURL=style.css.map */
