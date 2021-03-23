@@ -5,13 +5,14 @@ body{
 .drum-pad{
     background-color: green;
     height: 4rem;
-    width: 4rem;;
-}
+    width: 4rem;
+    transition: all .09s ease;
 
-
-.drum-pad:active{
-    background-color: white;
+    &.playing{
+        background-color: yellow;
     color:green;
+    transform: scale(1.1);
+    }
 }
 
 .volume{

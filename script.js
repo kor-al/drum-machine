@@ -1,36 +1,52 @@
-const display =  document.getElementById('display');
+const display = document.getElementById('display');
 
 function extractFileName(path) {
-    //let filename =  path.split("/").pop();
+    //let filename =  path.split("/").pop(); //gives only filename
     let pathArray = path.match(/[^\/]+/g);
     let filename = pathArray.slice(-1)[0];
     let folder = pathArray.slice(-2, -1)[0].replaceAll('%20', ' ');
-    console.log(folder, filename);
     //remove extension
     let name = filename.replace(/\.[^/.]+$/, "")
-    console.log(folder, name);
     return {
-    'folder' : folder,
-     'name': name}
-  }
+        'folder': folder,
+        'name': name
+    }
+}
 
-function playSound(e) {
-    const audio = document.querySelector(`#${e.key.toUpperCase()}`);
+function playSound(audio) {
     if (!audio) return;
-    const {folder,name} = extractFileName(audio.src);
-    console.log(folder, name);
+    const {
+        folder,
+        name
+    } = extractFileName(audio.src);
     const pad = audio.parentElement;
-    console.log(pad);
     display.innerHTML = name;
     pad.classList.add('playing');
     audio.currentTime = 0;
     audio.play();
-    audio.onended = function() {
+    audio.onended = function () {
         display.innerHTML = folder;
-      }
     }
+}
 
-  //const pads = Array.from(document.querySelectorAll('.drum-pad'));
-  //keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+function handleKeyDown(e) {
+    const audio = document.querySelector(`#${e.key.toUpperCase()}`);
+    playSound(audio);
+}
 
-  window.addEventListener('keydown', playSound);
+function handleClick(e) {
+    const audio = e.target.querySelector('audio');
+    playSound(audio);
+
+}
+
+function removeTransition(e) {
+    if (e.propertyName !== 'transform') return;
+    e.target.classList.remove('playing');
+  }
+
+const pads = Array.from(document.querySelectorAll('.drum-pad'));
+pads.forEach(pad => pad.addEventListener('click', handleClick));
+pads.forEach(pad => pad.addEventListener('transitionend', removeTransition));
+
+window.addEventListener('keydown', handleKeyDown);
