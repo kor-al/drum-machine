@@ -3,7 +3,7 @@ $machineColor: #181e31;
 $padsColor: #415a77;
 $volBarColor: #2c3162;
 $padsFontColor: #181e31;
-$footerFontColor: #495093;
+$footerFontColor: rgb(73, 80, 147);
 $displayFontColor: #9198e5;
 $volIconColor : #495093;
 
@@ -23,6 +23,16 @@ $volIconColor : #495093;
             /* inner white */
             -2px -2px 5px $colorCenter;
         }
+}
+
+a{
+    text-decoration: none;
+    color: $volIconColor;
+    font-weight: 900;
+
+    &:hover{
+        color: $displayFontColor;
+    }
 }
 
 body {
