@@ -1,100 +1,152 @@
-body{
+$backgroundColor: #181e31;
+$machineColor: #181e31;
+$padsColor: #415a77;
+$volBarColor: #2c3162;
+$padsFontColor: #181e31;
+$footerFontColor: #495093;
+$displayFontColor: #9198e5;
+$volIconColor : #495093;
+
+@mixin glow-class($colorCenter, $colorDark, $colorGlow){
+    background: radial-gradient($colorCenter, $colorDark);
+    box-shadow:
+        2px 2px 0px $colorGlow,
+        -2px -2px 0px $colorCenter;
+
+    &.playing {
+            background: radial-gradient($colorDark, $colorCenter);
+            background-color: #fff;
+            color: #fff;
+            transform: scale(1.1);
+            box-shadow:
+            2px 2px 5px $colorGlow,
+            /* inner white */
+            -2px -2px 5px $colorCenter;
+        }
+}
+
+body {
     height: 100vh;
     display: flex;
     font-family: 'Source Code Pro', monospace;
     align-items: center;
-    background-color: #2f3e46;
-    color: #1e272c;
+    background-color: $backgroundColor; //#2f3e46;
+    color: $padsFontColor;
 }
 
 @media only screen and (min-width : 500px) {
-    .container { max-width: 500px; }
-}
-
-#drum-machine{
-    background-color: #52796f;
-    //box-shadow: 0 0 10px 10px rgba(0,0,0,0.3);
-    box-shadow: 0 0 1px 10px #84a98c;
-    border-radius: 0.2rem;;
-}
-
-.drum-pad{
-margin: 0 auto; //center pads
-   background-color: #84a98c;
-   height: 5rem;
-   width: 5rem;
-   transition: all .09s ease;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   border-radius: 0.2rem;;
-
-    &.playing{
-        background-color: #cad2c5;
-    color:#84a98c;
-    transform: scale(1.1);
+    .container {
+        max-width: 500px;
     }
 }
 
-.volume{
+#drum-machine {
+    background-color: $machineColor;
+    padding: 2rem;
+    border-radius: 0.2rem;
+    box-shadow:
+    inset 0 0 10px #000000;
+    border-radius: 5%;
+}
+
+.drum-pad {
+    margin: 0 auto; //center pads
+    background-color: $padsColor;
+    color: $padsFontColor;
+    height: 5rem;
+    width: 5rem;
+    transition: all .09s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.2rem;
+    user-select:none;
+    ;
+
+
+    &.glow-1 {
+        @include glow-class(#ff9494, #601d78, #9198e5);
+    }
+    &.glow-3 {
+        @include glow-class(rgb(157, 133, 255), #144665, #9198e5);
+    }
+    &.glow-2 {
+        @include glow-class(rgb(233, 216, 121), #1d6f6c, #9198e5);
+    }
+    
+}
+
+.volume {
     //margin: 1rem auto 4rem auto; //center
     margin: 0 auto;
-    background-color: #354f52;
+    background-color: $backgroundColor;
     width: 3rem;
     height: 90%;
     display: flex;
     align-items: flex-end;
     overflow: hidden;
+
+    box-shadow:
+    inset 0 0 10px #000000;
 }
 
-.volume-bar{
-    background-color: #cad2c5;
+.volume-bar {
+    // background-color: #9198e5;
+    color: $padsFontColor;
     text-align: center;
     width: 100%;
     height: 100%;
+
+    background: linear-gradient(#6a71bd, #181e31);
 }
 
-.fa-volume-up{
-    color: #2f3e46;
+.fa-volume-up {
+    color: $volIconColor;
     margin: 1rem auto 1rem auto;
     transform: scale(1.2);
 }
 
 
 
-#display{
+#display {
     font-family: 'Source Code Pro', monospace;
+    color: $displayFontColor;
     padding-left: 1.3rem;
     margin-left: 0;
-    color: #cad2c5;
 }
 
-.footer{
+.footer {
     font-family: 'Lato', sans-serif;
     font-size: 0.9rem;
     text-align: right;
-    color: #2f3e46;
+    color: $footerFontColor;
 }
+
+
 
 
 // // Extra small devices (portrait phones, less than 300px)
 @media (max-width: 360px) {
 
-    .container{
+    #drum-machine{
+        padding: 1rem;
+    }
+
+    .container {
         margin: 0 0.8rem;
     }
 
-    .drum-pad{
+    .drum-pad {
         height: 4rem;
         width: 4rem;
     }
-    
-    .volume{
+
+    .volume {
         width: 2.5rem;
-        
+        font-size: 0.8rem;;
     }
 
-    #display{
+    #display {
         padding-left: 0.8rem;
     }
 }

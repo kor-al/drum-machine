@@ -7,8 +7,8 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #2f3e46;
-  color: #1e272c;
+  background-color: #181e31;
+  color: #181e31;
 }
 
 @media only screen and (min-width: 500px) {
@@ -18,15 +18,18 @@ body {
 }
 
 #drum-machine {
-  background-color: #52796f;
-  -webkit-box-shadow: 0 0 1px 10px #84a98c;
-          box-shadow: 0 0 1px 10px #84a98c;
+  background-color: #181e31;
+  padding: 2rem;
   border-radius: 0.2rem;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+          box-shadow: inset 0 0 10px #000000;
+  border-radius: 5%;
 }
 
 .drum-pad {
   margin: 0 auto;
-  background-color: #84a98c;
+  background-color: #415a77;
+  color: #181e31;
   height: 5rem;
   width: 5rem;
   -webkit-transition: all .09s ease;
@@ -41,18 +44,63 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   border-radius: 0.2rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
-.drum-pad.playing {
-  background-color: #cad2c5;
-  color: #84a98c;
+.drum-pad.glow-1 {
+  background: radial-gradient(#ff9494, #601d78);
+  -webkit-box-shadow: 2px 2px 0px #9198e5, -2px -2px 0px #ff9494;
+          box-shadow: 2px 2px 0px #9198e5, -2px -2px 0px #ff9494;
+}
+
+.drum-pad.glow-1.playing {
+  background: radial-gradient(#601d78, #ff9494);
+  background-color: #fff;
+  color: #fff;
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
+  -webkit-box-shadow: 2px 2px 5px #9198e5, -2px -2px 5px #ff9494;
+          box-shadow: 2px 2px 5px #9198e5, -2px -2px 5px #ff9494;
+}
+
+.drum-pad.glow-3 {
+  background: radial-gradient(#9d85ff, #144665);
+  -webkit-box-shadow: 2px 2px 0px #9198e5, -2px -2px 0px #9d85ff;
+          box-shadow: 2px 2px 0px #9198e5, -2px -2px 0px #9d85ff;
+}
+
+.drum-pad.glow-3.playing {
+  background: radial-gradient(#144665, #9d85ff);
+  background-color: #fff;
+  color: #fff;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-box-shadow: 2px 2px 5px #9198e5, -2px -2px 5px #9d85ff;
+          box-shadow: 2px 2px 5px #9198e5, -2px -2px 5px #9d85ff;
+}
+
+.drum-pad.glow-2 {
+  background: radial-gradient(#e9d879, #1d6f6c);
+  -webkit-box-shadow: 2px 2px 0px #9198e5, -2px -2px 0px #e9d879;
+          box-shadow: 2px 2px 0px #9198e5, -2px -2px 0px #e9d879;
+}
+
+.drum-pad.glow-2.playing {
+  background: radial-gradient(#1d6f6c, #e9d879);
+  background-color: #fff;
+  color: #fff;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-box-shadow: 2px 2px 5px #9198e5, -2px -2px 5px #e9d879;
+          box-shadow: 2px 2px 5px #9198e5, -2px -2px 5px #e9d879;
 }
 
 .volume {
   margin: 0 auto;
-  background-color: #354f52;
+  background-color: #181e31;
   width: 3rem;
   height: 90%;
   display: -webkit-box;
@@ -62,17 +110,21 @@ body {
       -ms-flex-align: end;
           align-items: flex-end;
   overflow: hidden;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+          box-shadow: inset 0 0 10px #000000;
 }
 
 .volume-bar {
-  background-color: #cad2c5;
+  color: #181e31;
   text-align: center;
   width: 100%;
   height: 100%;
+  background: -webkit-gradient(linear, left top, left bottom, from(#6a71bd), to(#181e31));
+  background: linear-gradient(#6a71bd, #181e31);
 }
 
 .fa-volume-up {
-  color: #2f3e46;
+  color: #495093;
   margin: 1rem auto 1rem auto;
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
@@ -80,19 +132,22 @@ body {
 
 #display {
   font-family: 'Source Code Pro', monospace;
+  color: #9198e5;
   padding-left: 1.3rem;
   margin-left: 0;
-  color: #cad2c5;
 }
 
 .footer {
   font-family: 'Lato', sans-serif;
   font-size: 0.9rem;
   text-align: right;
-  color: #2f3e46;
+  color: #495093;
 }
 
 @media (max-width: 360px) {
+  #drum-machine {
+    padding: 1rem;
+  }
   .container {
     margin: 0 0.8rem;
   }
@@ -102,6 +157,7 @@ body {
   }
   .volume {
     width: 2.5rem;
+    font-size: 0.8rem;
   }
   #display {
     padding-left: 0.8rem;
