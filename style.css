@@ -1,35 +1,110 @@
 body {
   height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: 'Source Code Pro', monospace;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #2f3e46;
+  color: #1e272c;
+}
+
+@media only screen and (min-width: 500px) {
+  .container {
+    max-width: 500px;
+  }
+}
+
+#drum-machine {
+  background-color: #52796f;
+  -webkit-box-shadow: 0 0 1px 10px #84a98c;
+          box-shadow: 0 0 1px 10px #84a98c;
+  border-radius: 0.2rem;
 }
 
 .drum-pad {
-  background-color: green;
-  height: 4rem;
-  width: 4rem;
+  margin: 0 auto;
+  background-color: #84a98c;
+  height: 5rem;
+  width: 5rem;
   -webkit-transition: all .09s ease;
   transition: all .09s ease;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 0.2rem;
 }
 
 .drum-pad.playing {
-  background-color: yellow;
-  color: green;
+  background-color: #cad2c5;
+  color: #84a98c;
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
 }
 
 .volume {
-  background-color: cyan;
+  margin: 0 auto;
+  background-color: #354f52;
+  width: 3rem;
+  height: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  overflow: hidden;
+}
+
+.volume-bar {
+  background-color: #cad2c5;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+.fa-volume-up {
+  color: #2f3e46;
+  margin: 1rem auto 1rem auto;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 #display {
-  background-color: grey;
-  text-align: center;
-  width: 10rem;
+  font-family: 'Source Code Pro', monospace;
+  padding-left: 1.3rem;
+  margin-left: 0;
+  color: #cad2c5;
 }
 
-@media (max-width: 575.98px) {
+.footer {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.9rem;
+  text-align: right;
+  color: #2f3e46;
+}
+
+@media (max-width: 360px) {
+  .container {
+    margin: 0 0.8rem;
+  }
+  .drum-pad {
+    height: 4rem;
+    width: 4rem;
+  }
   .volume {
-    margin-top: 1rem;
+    width: 2.5rem;
+  }
+  #display {
+    padding-left: 0.8rem;
   }
 }
 /*# sourceMappingURL=style.css.map */

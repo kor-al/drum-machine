@@ -31,6 +31,7 @@ function playSound(audio) {
 
 function handleKeyDown(e) {
     const audio = document.querySelector(`#${e.key.toUpperCase()}`);
+    console.log(audio.volume);
     playSound(audio);
 }
 
@@ -45,8 +46,33 @@ function removeTransition(e) {
     e.target.classList.remove('playing');
   }
 
+
+
+function handleMove(e) {
+    const y = e.pageY - this.offsetTop;
+    const percent = 1 - y / this.offsetHeight;
+    const min = 0.;
+    const max = 1.;
+    const height = Math.round(percent * 100) + '%';
+    const vol = percent * (max - min) + min;
+    bar.style.height = height;
+    bar.textContent = vol.toFixed(1) + '×';
+    Array.from(audios).forEach(aud => {aud.volume = vol});
+    Array.from(audios).forEach(aud => {console.log(aud.volume)});
+}
+
+
 const pads = Array.from(document.querySelectorAll('.drum-pad'));
 pads.forEach(pad => pad.addEventListener('click', handleClick));
 pads.forEach(pad => pad.addEventListener('transitionend', removeTransition));
-
 window.addEventListener('keydown', handleKeyDown);
+
+
+//volume control
+const volume = document.querySelector('.volume');
+const bar = document.querySelector('.volume-bar');
+const audios = document.querySelectorAll('.clip');
+volume.addEventListener('mousemove', handleMove);
+
+
+

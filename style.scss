@@ -1,35 +1,100 @@
 body{
     height: 100vh;
+    display: flex;
+    font-family: 'Source Code Pro', monospace;
+    align-items: center;
+    background-color: #2f3e46;
+    color: #1e272c;
+}
+
+@media only screen and (min-width : 500px) {
+    .container { max-width: 500px; }
+}
+
+#drum-machine{
+    background-color: #52796f;
+    //box-shadow: 0 0 10px 10px rgba(0,0,0,0.3);
+    box-shadow: 0 0 1px 10px #84a98c;
+    border-radius: 0.2rem;;
 }
 
 .drum-pad{
-    background-color: green;
-    height: 4rem;
-    width: 4rem;
-    transition: all .09s ease;
+margin: 0 auto; //center pads
+   background-color: #84a98c;
+   height: 5rem;
+   width: 5rem;
+   transition: all .09s ease;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 0.2rem;;
 
     &.playing{
-        background-color: yellow;
-    color:green;
+        background-color: #cad2c5;
+    color:#84a98c;
     transform: scale(1.1);
     }
 }
 
 .volume{
-    background-color: cyan;
+    //margin: 1rem auto 4rem auto; //center
+    margin: 0 auto;
+    background-color: #354f52;
+    width: 3rem;
+    height: 90%;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
 }
+
+.volume-bar{
+    background-color: #cad2c5;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+.fa-volume-up{
+    color: #2f3e46;
+    margin: 1rem auto 1rem auto;
+    transform: scale(1.2);
+}
+
+
 
 #display{
-    background-color: grey;
-    text-align: center;
-    width: 10rem;;
+    font-family: 'Source Code Pro', monospace;
+    padding-left: 1.3rem;
+    margin-left: 0;
+    color: #cad2c5;
+}
+
+.footer{
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    text-align: right;
+    color: #2f3e46;
 }
 
 
-// Extra small devices (portrait phones, less than 576px)
-@media (max-width: 575.98px) {
-    .volume{
-        margin-top: 1rem;
+// // Extra small devices (portrait phones, less than 300px)
+@media (max-width: 360px) {
+
+    .container{
+        margin: 0 0.8rem;
     }
 
+    .drum-pad{
+        height: 4rem;
+        width: 4rem;
+    }
+    
+    .volume{
+        width: 2.5rem;
+        
+    }
+
+    #display{
+        padding-left: 0.8rem;
+    }
 }
